@@ -30,7 +30,9 @@ function App() {
           </Route>
         </Routes>
       </PersistGate>
-      <Route path='/dsds' element={<CategoryItemDetail/>}/>
+      <Routes>
+        <Route path='/dsds' element={<CategoryItemDetail/>}/>
+      </Routes>
     </Provider>
   );
 }
