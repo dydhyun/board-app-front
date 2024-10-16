@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import Post from './pages/Post';
 import BoardList from './pages/BoardList';
 import Board from './pages/Board';
+import CategoryItemDetail from './components/categoryItemDetail/CategoryItemDetail';
 
 function App() {
   const persiststore = persistStore(store);
@@ -25,6 +26,7 @@ function App() {
             <Route path='/post' element={<Post/>}/>
             <Route path='/board-list' element={<BoardList/>}/>
             <Route path='/board/:id' element={<Board/>}/>
+            <Route path='/category-itemdetail' element={<CategoryItemDetail/>}/>
           </Route>
         </Routes>
       </PersistGate>
