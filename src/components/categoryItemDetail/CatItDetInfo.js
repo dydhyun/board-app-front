@@ -11,6 +11,7 @@ import CatItDetAxios from './CatItDetAxios';
 
 
 const CatItDetInfo = () => {
+  const product_description="상품 설명입니다.";
 
   return (
     <div className="CID-item-info" id='CID-item-info'>
