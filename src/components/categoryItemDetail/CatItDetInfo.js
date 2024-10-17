@@ -15,15 +15,15 @@ const CatItDetInfo = ({ response }) => {
   if (!response) {
     return <div>Loading...</div>; // response가 없을 때 로딩 메시지를 출력
   }
-  
+
   return (
     <div className="CID-item-info" id='CID-item-info'>
       <CatItDetTab/>
       <div className="CID-info-box">
         <h3>상품 설명</h3>
-        <p>
-        product_description={response.productDescription}
-        </p>
+
+        <p>{response.productDescription}</p>
+        
         <br/>
         <legend>특징 :</legend>
         <ul style={{ listStyle: 'disc', paddingLeft: '20px' }}>
