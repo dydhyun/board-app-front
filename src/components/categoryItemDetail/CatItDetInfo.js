@@ -10,7 +10,8 @@ import CatItDetTab from './CatItDetTab';
 import CatItDetAxios from './CatItDetAxios';
 
 
-const CatItDetInfo = () => {
+const CatItDetInfo = ({ response }) => {
+
   const product_description="상품 설명입니다.";
 
   return (
@@ -18,7 +19,9 @@ const CatItDetInfo = () => {
       <CatItDetTab/>
       <div className="CID-info-box">
         <h3>상품 설명</h3>
-        <CatItDetAxios product_description={product_description}/>
+        <p>
+        product_description={response.productDescription}
+        </p>
         <br/>
         <legend>특징 :</legend>
         <ul style={{ listStyle: 'disc', paddingLeft: '20px' }}>

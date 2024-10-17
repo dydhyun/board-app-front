@@ -26,7 +26,7 @@ function App() {
             <Route path='/post' element={<Post/>}/>
             <Route path='/board-list' element={<BoardList/>}/>
             <Route path='/board/:id' element={<Board/>}/>
-            <Route path='/category-itemdetail' element={<CategoryItemDetail/>}/>
+            <Route path='/category-itemdetail/:auctionIndex' element={<CategoryItemDetail/>}/>
           </Route>
         </Routes>
       </PersistGate>
