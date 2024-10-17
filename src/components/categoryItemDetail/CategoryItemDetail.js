@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import CategoryItemDetailInfo from './CatItDetInfo';
 import CategoryItemDetailInquiry from './CatItDetInquiry';
 import CategoryItemDetailReturn from './CatItDetReturn';
