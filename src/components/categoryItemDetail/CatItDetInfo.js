@@ -12,8 +12,10 @@ import CatItDetAxios from './CatItDetAxios';
 
 const CatItDetInfo = ({ response }) => {
 
-  const product_description="상품 설명입니다.";
-
+  if (!response) {
+    return <div>Loading...</div>; // response가 없을 때 로딩 메시지를 출력
+  }
+  
   return (
     <div className="CID-item-info" id='CID-item-info'>
       <CatItDetTab/>
