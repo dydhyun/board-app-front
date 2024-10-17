@@ -13,6 +13,51 @@ import { IconButton } from '@mui/material';
 
 const CatItDetMain = ({ response }) => {
 
+  // 경매 Index
+  const auctionId = response.auctionIndex;
+  // 맴버 index
+  const memberIndex = response.memberIndex;
+  // 경매 타입
+  const auctionType = response.auctionType;
+  // 카테고리
+  const category = response.category;
+  // 세부 카테고리
+  const subcategory = response.subcategory;
+  // 물품 제목 , 이름
+  const productName = response.productName;
+  // 물품 설명
+  const productDescription = response.productDescription;
+  
+  // 썸네일이미지
+  
+  // const 진행중인 경매수
+
+  // const 경매진행자 sellerName
+
+  // 경매 시작가
+  const startingPrice = response.startingPrice;
+  // 경매 시작시간
+  const starting_LocalDateTime = response.starting_LocalDateTime;
+  // 경매 종료시간
+  const ending_LocalDateTime = response.endting_LocalDateTime;
+  // 입찰단위
+  const bidIncreasement = response.bidIncreasement;
+  // 즉시구매 가격
+  const instantPurchasePrice = response.instantPurchasePrice
+  // 재경매 시작가
+  const reauctionStartingPrice = response.reauctionStartingPrice
+  // 경매 상태
+  const auctionStatus = response.auctionStatus;
+  // 조회수
+  const viewCnt = response.viewCnt;
+  // 경매 등록시간 - board의 regdate
+  const regdate = response.regdate;
+  // 경매 수정시간 - board의 moddate
+  const moddate = response.moddate;
+
+
+
+
   // 판매자 정보 더 보기 모달창
   const [sellerModalOpen, setSellerModalOpen] = useState(false);
   const openSellerModal = () => {
@@ -44,14 +89,14 @@ const CatItDetMain = ({ response }) => {
 
 
   // 희망 입찰가 상태 관리
-  const [bidAmount, setBidAmount] = useState( { response.startingPrice} );  // 초기값 설정
+  const [bidAmount, setBidAmount] = useState(startingPrice);
   // 입찰가 증가 함수
   const increaseBid = () => {
-    setBidAmount((prevBid) => prevBid + 1000);  // +1000
+    setBidAmount((prevBid) => prevBid + bidIncreasement);
   };
   // 입찰가 감소 함수
   const decreaseBid = () => {
-    setBidAmount((prevBid) => Math.max(prevBid - 1000, 0));  // -1000, 최소값은 0
+    setBidAmount((prevBid) => Math.max(prevBid - bidIncreasement, 0));  // 최소값은 0
   };
 
 
@@ -65,8 +110,8 @@ const CatItDetMain = ({ response }) => {
   };
   // 입찰하기 모달의 아이템 현재 정보
   const nowBiddingInfo = {
-    name: "Classibot (iBoy)",
-    category: "일반경매 입찰",
+    name: productName,
+    category: category,
     bidPrice: bidAmount,
     purchaseFee: (bidAmount / 10), // 구매 수수료 는 구매가의 10퍼센트
   };
@@ -106,7 +151,7 @@ const CatItDetMain = ({ response }) => {
 
 
   // 즉시구매가 설정
-  const [buyNowPrice, setBuyNowPrice] = useState(110000);
+  const [buyNowPrice, setBuyNowPrice] = useState(instantPurchasePrice);
   // 즉시구매 모달창
   const [buyingNowModalOpen, setBuyingNowModalOpen] = useState(false);
   const openBuyingNowModal = () => {
@@ -172,11 +217,11 @@ const CatItDetMain = ({ response }) => {
           {/* 판매자 섹션 */}
           <div className="CID-merchant-section">
             <div className="CID-merchant-info">
-              <p>판매자: (seller.name)</p>
-              <p>판매자의 진행중인 경매: (DB에서 조회)건</p>
+              <p>판매자: sellerName</p>
+              <p>판매자의 진행중인 경매: (memberIndex - cnt DB에서 조회)건</p>
             </div>
             <div className="CID-merchant-link">
-              <button className='CID-seller-more-info-hvr' onClick={openSellerModal}>seller.name + 의 정보 더보기</button>
+              <button className='CID-seller-more-info-hvr' onClick={openSellerModal}>sellerName + 의 정보 더보기</button>
               {/* 첫 번째 모달 - open-seller-modal : 판매자 정보 더 보기 */}
               <Modal
                 isOpen={sellerModalOpen}
@@ -194,19 +239,19 @@ const CatItDetMain = ({ response }) => {
                   <tbody>
                     <tr>
                       <th>판매자 아이디</th>
-                      <td>Crown_Bid</td>
+                      <td>판매자정보더보기모달에서사용할데이터memberIndex로가져오기</td>
                     </tr>
                     <tr>
                       <th>전화번호</th>
-                      <td>010-9578-2453</td>
+                      <td>판매자정보더보기모달에서사용할데이터memberIndex로가져오기</td>
                     </tr>
                     <tr>
                       <th>E-mail</th>
-                      <td>bit@bitcamp.com</td>
+                      <td>판매자정보더보기모달에서사용할데이터memberIndex로가져오기</td>
                     </tr>
                     <tr>
                       <th>상호명</th>
-                      <td>크라운비드</td>
+                      <td>판매자정보더보기모달에서사용할데이터memberIndex로가져오기유저상세테이블에서</td>
                     </tr>
                     <tr>
                       <th>사업자 구분</th>
@@ -240,14 +285,14 @@ const CatItDetMain = ({ response }) => {
 
         {/* 입찰 섹션 */}
         <div className="CID-bid-section">
-          <div className="CID-bid-title">(DB에서 사용자가 입력한 아이템이름 조회)</div>
-          <div className="CID-price">현재가: (DB에서 조회) 원</div>
+          <div className="CID-bid-title">productName</div>
+          <div className="CID-price">현재가: 다른테이블에서 가져와야됨 원</div>
 
           <div className="CID-bid-details">
             <p>남은시간: 0일 0시간 0분 0초 (DB에서 조회)</p>
-            <p>경매번호: (DB에서 조회)</p>
+            <p>경매번호: auctionIndex</p>
             <p>
-              입찰기록: (DB에서 조회)회
+              입찰기록: 다른테이블 입찰내역 테이블 경매아이디로 조회 회
               <div>
                 <span className="CID-hover-link" onClick={openBiddingRecordModal}>[기록보기]</span>
                 {/* 두 번째 모달 - bidding-record-modal : 입찰 기록 보기 */}
@@ -283,7 +328,7 @@ const CatItDetMain = ({ response }) => {
                 </Modal>
               </div>
             </p>
-            <p>입찰단위: (DB에서 조회)원</p>
+            <p>입찰단위: bidIncreasement 원</p>
           </div>
 
           <div className="CID-bid-controls">
