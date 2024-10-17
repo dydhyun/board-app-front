@@ -18,7 +18,9 @@ const CategoryItemDetail = () => {
             
             <CategoryItemDetailMain response={response}/>
             <CategoryItemDetailInfo response={response}/>
-            <CategoryItemDetailInquiry/>
+            {/* 이미지는 테이블참조해서 추가로 가져오고 */}
+            <CategoryItemDetailInquiry response={response}/>
+            {/* 여기 인쿼리는 또 따로가져와야지 */}
             <CategoryItemDetailReturn/>
         
         </div>

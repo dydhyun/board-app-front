@@ -11,7 +11,7 @@ import AddBoxIcon from '@mui/icons-material/AddBox';
 import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox';
 import { IconButton } from '@mui/material';
 
-const CatItDetMain = () => {
+const CatItDetMain = ({ response }) => {
 
   // 판매자 정보 더 보기 모달창
   const [sellerModalOpen, setSellerModalOpen] = useState(false);
@@ -30,37 +30,21 @@ const CatItDetMain = () => {
   const closeBiddingRecordModal = () => {
     setBiddingRecordModalOpen(false);
   };
-  // 입찰 기록보기 모달에서 사용할 입찰 기록 데이터
+  // 입찰 기록보기 모달에서 사용할 입찰 기록 데이터 도 받아야겠지
   const biddingRecords = [
     { date: '2024-09-02 18:47', bidder: '3번 입찰자', amount: '56,000 원' },
     { date: '2024-09-01 11:28', bidder: '2번 입찰자', amount: '55,000 원' },
     { date: '2024-09-01 08:53', bidder: '1번 입찰자', amount: '52,000 원' },
   ];
-  // 다음 백엔드 로직으로 교체될거임
-  // 입찰 기록 데이터 상태 관리
-  // const [biddingRecords, setBiddingRecords] = useState([]);
-  // const [loading, setLoading] = useState(true);  // 로딩 상태
- 
+  
   // // 백엔드에서 입찰 기록 데이터를 가져오기
   // useEffect(() => {
-  //   const fetchBiddingRecords = async () => {
-  //     try {
-  //       const response = await fetch('/api/bidding-records');  // 백엔드 API 엔드포인트
-  //       const data = await response.json();  // JSON 형식의 응답을 파싱
-  //       setBiddingRecords(data);  // 가져온 데이터를 상태에 저장
-  //       setLoading(false);  // 로딩 완료
-  //     } catch (error) {
-  //      console.error('Error fetching bidding records:', error);
-  //      setLoading(false);  // 로딩 실패
-  //     }
-  //   };
- 
-  //   fetchBiddingRecords();
+    
   // }, []);  // 빈 배열을 넣어 컴포넌트가 처음 렌더링될 때 한 번만 실행
 
 
   // 희망 입찰가 상태 관리
-  const [bidAmount, setBidAmount] = useState(63000);  // 초기값 설정
+  const [bidAmount, setBidAmount] = useState( { response.startingPrice} );  // 초기값 설정
   // 입찰가 증가 함수
   const increaseBid = () => {
     setBidAmount((prevBid) => prevBid + 1000);  // +1000
