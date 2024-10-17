@@ -12,6 +12,7 @@ import CatItDetAxios from './CatItDetAxios';
 
 const CatItDetInfo = ({ response }) => {
 
+  console.log(response);
   if (!response) {
     return <div>Loading...</div>; // response가 없을 때 로딩 메시지를 출력
   }
@@ -23,7 +24,7 @@ const CatItDetInfo = ({ response }) => {
         <h3>상품 설명</h3>
 
         <p>{response.productDescription}</p>
-        
+
         <br/>
         <legend>특징 :</legend>
         <ul style={{ listStyle: 'disc', paddingLeft: '20px' }}>
