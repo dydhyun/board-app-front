@@ -14,7 +14,7 @@ import { IconButton } from '@mui/material';
 const CatItDetMain = ({ response }) => {
 
   // 경매 Index
-  const auctionId = response.auctionIndex;
+  const auctionIndex = response.auctionIndex;
   // 맴버 index
   const memberIndex = response.memberIndex;
   // 경매 타입
